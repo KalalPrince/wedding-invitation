@@ -325,9 +325,14 @@
       triggerPetalShower(35);
     }
 
-    // Attempt audio playback on opening envelope (handles browser autoplay blocking fallback)
-    if (window.weddingAudio && typeof window.weddingAudio.triggerFirstInteractionPlayback === 'function') {
-      window.weddingAudio.triggerFirstInteractionPlayback();
+    // Call audio.play() directly from the user's tap handler and handle its returned promise
+    if (window.weddingAudio && typeof window.weddingAudio.play === 'function') {
+      if (!window.weddingAudio.userExplicitlyPaused && !window.weddingAudio.isPlaying) {
+        const p = window.weddingAudio.play(true);
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => {});
+        }
+      }
     }
   }
 
@@ -684,15 +689,23 @@
         }
       };
 
-      audioBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+      const handleAudioToggle = (e) => {
+        if (e) {
+          e.stopPropagation();
+          if (e.type === 'touchend') {
+            e.preventDefault();
+          }
+        }
         window.weddingAudio.toggle();
         const isEn = state.lang === 'en';
         showToast(window.weddingAudio.isPlaying
           ? (isEn ? '🎵 Playing Rajasthani Folk: Padharo Mhare Desh' : '🎵 राजस्थानी लोक धुन: पधारो म्हारे देश जारी')
           : (isEn ? '⏸️ Music Paused' : '⏸️ संगीत रोका गया')
         );
-      });
+      };
+
+      audioBtn.addEventListener('click', handleAudioToggle);
+      audioBtn.addEventListener('touchend', handleAudioToggle, { passive: false });
 
       // Initialize audio engine (hooks events and executes autoplay attempt)
       window.weddingAudio.init();
@@ -1013,14 +1026,23 @@
       langBtn.addEventListener('click', toggleLanguage);
     }
 
-    // Envelope open click
+    // Envelope open click & touch handlers for mobile touchscreens
+    const handleEnvelopeOpen = (e) => {
+      if (e && e.type === 'touchend') {
+        e.preventDefault();
+      }
+      openEnvelope(true);
+    };
+
     const openBtn = document.getElementById('openInvitationBtn');
     if (openBtn) {
-      openBtn.addEventListener('click', () => openEnvelope(true));
+      openBtn.addEventListener('click', handleEnvelopeOpen);
+      openBtn.addEventListener('touchend', handleEnvelopeOpen, { passive: false });
     }
     const waxSeal = document.getElementById('waxSealBtn');
     if (waxSeal) {
-      waxSeal.addEventListener('click', () => openEnvelope(true));
+      waxSeal.addEventListener('click', handleEnvelopeOpen);
+      waxSeal.addEventListener('touchend', handleEnvelopeOpen, { passive: false });
     }
     const reopenCoverBtn = document.getElementById('reopenCoverBtn');
     if (reopenCoverBtn) {

@@ -2,12 +2,13 @@
  * Malviya Family Wedding Invitation - Background Music & Audio Engine
  * Features the authentic Rajasthani folk tune "Padharo Mhare Desh" (Instrumental).
  *
- * Implements:
- * - Robust HTML5 Audio element streaming with seamless looping
+ * Mobile & Desktop Compatibility Features:
+ * - Robust HTML5 Audio streaming with verified asset paths and direct audio.src binding
  * - Graceful initial autoplay attempt with Promise rejection handling
- * - First-user-interaction fallback (starts playback on "Open Invitation", wax seal, or touch/click)
- * - Explicit user pause tracking (never overrides an explicit pause on navigation or interaction)
+ * - First-user-interaction fallback specifically tailored for mobile touch (touchend/click)
+ * - Synchronous audio.play() execution from user gestures (iOS Safari & Android Chrome requirement)
  * - Single audio instance preserved across client-side view routing (Home, Jaimin & Monika, Gayatri & Aditya)
+ * - Explicit user pause tracking (never overrides an explicit user pause on navigation or interaction)
  * - Offline Web Audio API synthesis fallback tuned to Rajasthani Maand Raga
  */
 
@@ -60,8 +61,19 @@ class WeddingAudioManager {
     this.htmlAudio = document.getElementById("weddingBgAudio");
 
     if (this.htmlAudio) {
+      // Ensure direct src is set for mobile Safari / Chrome compatibility
+      const targetSrc = "assets/audio/padharo-mhare-desh.mp3";
+      if (!this.htmlAudio.getAttribute("src") || this.htmlAudio.src === "" || this.htmlAudio.src === window.location.href) {
+        this.htmlAudio.src = targetSrc;
+      }
+
       this.htmlAudio.loop = true;
       this.htmlAudio.volume = 0.7; // Comfortable background music volume
+      this.htmlAudio.playsInline = true;
+
+      try {
+        this.htmlAudio.load();
+      } catch (e) {}
 
       // Guarantee loop if browser audio loop event hiccups
       this.htmlAudio.addEventListener("ended", () => {
@@ -88,14 +100,14 @@ class WeddingAudioManager {
       });
 
       this.htmlAudio.addEventListener("error", (e) => {
-        console.warn("Background audio element error, falling back to Web Audio API synth:", e);
+        console.warn("Background audio element error:", e);
         if (this.isPlaying && !this.userExplicitlyPaused) {
           this.startSynth();
         }
       });
     }
 
-    // Set up global first-interaction listeners in case autoplay is blocked
+    // Set up global first-interaction listeners in case autoplay is blocked on mobile
     this.setupFirstInteractionListeners();
 
     // Attempt initial autoplay as required
@@ -115,6 +127,8 @@ class WeddingAudioManager {
           .then(() => {
             if (this.userExplicitlyPaused) {
               try { this.htmlAudio.pause(); } catch (e) {}
+              this.isPlaying = false;
+              if (this.onStateChange) this.onStateChange(false);
               return;
             }
             this.isPlaying = true;
@@ -124,7 +138,7 @@ class WeddingAudioManager {
             if (this.onStateChange) this.onStateChange(true);
           })
           .catch(() => {
-            // Autoplay was blocked by browser policy (NotAllowedError)
+            // Expected on mobile devices without user activation
             this.isPlaying = false;
             this.isAutoplayBlocked = true;
             if (this.onStateChange) this.onStateChange(false);
@@ -134,10 +148,11 @@ class WeddingAudioManager {
   }
 
   /**
-   * Adds one-time window listeners for user gesture
+   * Adds one-time window listeners for user gesture (touchend, click, keydown)
+   * Note: We avoid 'touchstart' because iOS Safari requires touchend/click for audio activation.
    */
   setupFirstInteractionListeners() {
-    const events = ["click", "touchstart", "keydown"];
+    const events = ["touchend", "click", "keydown"];
     events.forEach((ev) => {
       window.addEventListener(ev, this._boundFirstInteraction, { capture: true, passive: true });
     });
@@ -147,7 +162,7 @@ class WeddingAudioManager {
    * Removes one-time window listeners
    */
   removeFirstInteractionListeners() {
-    const events = ["click", "touchstart", "keydown"];
+    const events = ["touchend", "click", "keydown"];
     events.forEach((ev) => {
       window.removeEventListener(ev, this._boundFirstInteraction, { capture: true });
     });
@@ -159,7 +174,7 @@ class WeddingAudioManager {
   handleFirstInteraction(event) {
     if (this.firstGestureHandled) return;
 
-    // If target was the explicit audio toggle button, let its own handler do the work
+    // If target was the explicit audio toggle button, let its dedicated handler execute
     if (event && event.target && event.target.closest && event.target.closest("#audioToggleBtn")) {
       this.firstGestureHandled = true;
       this.removeFirstInteractionListeners();
@@ -179,55 +194,75 @@ class WeddingAudioManager {
 
     // If user explicitly paused previously, DO NOT force playback
     if (this.userExplicitlyPaused || this.isPlaying) {
-      return;
+      return Promise.resolve(false);
     }
 
-    this.play(false);
+    return this.play(true);
   }
 
   /**
-   * Main play method
+   * Main play method - returns Promise for direct caller handling
    */
   play(fromUserGesture = true) {
     if (fromUserGesture) {
       this.userExplicitlyPaused = false;
     }
 
+    // Unlock Web Audio context synchronously during user gesture
+    this.initAudioContext();
+
     if (this.htmlAudio) {
-      this.isPlaying = true;
+      // Ensure source is present
+      const targetSrc = "assets/audio/padharo-mhare-desh.mp3";
+      if (!this.htmlAudio.getAttribute("src") || this.htmlAudio.src === "" || this.htmlAudio.src === window.location.href) {
+        this.htmlAudio.src = targetSrc;
+        try { this.htmlAudio.load(); } catch (e) {}
+      }
+
       const playPromise = this.htmlAudio.play();
       if (playPromise !== undefined && typeof playPromise.then === "function") {
-        playPromise
+        return playPromise
           .then(() => {
             if (this.userExplicitlyPaused) {
               try { this.htmlAudio.pause(); } catch (e) {}
               this.isPlaying = false;
               if (this.onStateChange) this.onStateChange(false);
-              return;
+              return false;
             }
             this.isPlaying = true;
             this.stopSynth();
             if (this.onStateChange) this.onStateChange(true);
+            return true;
           })
           .catch((err) => {
             if (this.userExplicitlyPaused || (err && err.name === 'AbortError')) {
               this.isPlaying = false;
               if (this.onStateChange) this.onStateChange(false);
-              return;
+              return false;
             }
             console.warn("Audio play() promise rejected, falling back to Web Audio synth:", err);
-            this.startSynth();
-            this.isPlaying = true;
-            if (this.onStateChange) this.onStateChange(true);
+            this.isPlaying = false;
+            if (this.onStateChange) this.onStateChange(false);
+
+            // If triggered by a user gesture, start the Web Audio API synthesized Maand melody
+            if (fromUserGesture) {
+              this.startSynth();
+              this.isPlaying = true;
+              if (this.onStateChange) this.onStateChange(true);
+            }
+            return false;
           });
       } else {
+        this.isPlaying = true;
         this.stopSynth();
         if (this.onStateChange) this.onStateChange(true);
+        return Promise.resolve(true);
       }
     } else {
       this.startSynth();
       this.isPlaying = true;
       if (this.onStateChange) this.onStateChange(true);
+      return Promise.resolve(true);
     }
   }
 
@@ -251,6 +286,7 @@ class WeddingAudioManager {
     if (this.onStateChange) {
       this.onStateChange(false);
     }
+    return true;
   }
 
   /**
@@ -275,7 +311,9 @@ class WeddingAudioManager {
       }
     }
     if (this.audioContext && this.audioContext.state === "suspended") {
-      this.audioContext.resume();
+      try {
+        this.audioContext.resume();
+      } catch (e) {}
     }
   }
 
