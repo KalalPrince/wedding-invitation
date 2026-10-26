@@ -38,7 +38,7 @@ Built with complete fidelity to the provided `Wedding invitation.pdf` (source of
   - Couple: **Chi. Jaimin & Sau. Ka. Monika**
   - Date: **Thursday, 26 November 2026**
   - Complete lineage for both Groom and Bride.
-  - Dedicated ceremony schedule: Priti Bhoj (25 Nov, 11:15 AM onwards), Barat Departure (26 Nov, 7:15 AM to Nardas Ka Guda), Hast Melap (26 Nov, 11:00 AM to 3:00 PM).
+  - Dedicated ceremony schedule: Priti Bhoj (25 Nov, 11:15 AM onwards), Barat Departure (26 Nov, 7:15 AM to Nardas Ka Gurha), Hast Melap (26 Nov, 11:00 AM to 3:00 PM).
   - Add to Calendar and WhatsApp sharing controls.
 - **Gayatri's Dedicated Invitation (`#gayatri-aditya`)**:
   - Couple: **Sau. Ka. Gayatri (Shilpa) & Chi. Aditya**
@@ -169,8 +169,8 @@ Double-click `index.html` to open directly in Google Chrome, Microsoft Edge, Saf
 | **Nimantrak Hosts** | Verified | Bhagwanlalji & Jivanlalji s/o Late Shri Kanaji Kalal (Page 1) |
 | **Host Phone Numbers** | Verified | 9427069679, 8866024167, 9725761069, 9724651567 |
 | **Main Residence** | Verified | Kalalo ki Aanti (Dholi Mangri), Tehsil Deogarh, Dist. Rajsamand, Rajasthan |
-| **Jaimin's In-law Venue**| Verified | Shri Devendraji Ashokji Siddhawat, Nardas Ka Guda, Rajasthan |
+| **Jaimin's In-law Venue**| Verified | Shri Devendraji Ashokji Siddhawat, Nardas Ka Gurha, Rajasthan |
 | **Gayatri's Groom Venue** | Verified | Shri Rameshchandraji Kaddur, Village Binol, Rajasthan (Ahmedabad) |
-| **Establishments** | Verified | Jeevan Universal Developers & Advisory (Dholera-Ahmedabad); S. G. Science Academy (Ahmedabad) |
+| **Establishments** | Verified | Jivan Universal Developers & Advisory (Dholera-Ahmedabad); S. G. Science Academy (Ahmedabad) |
 
-*Note on Google Maps Navigation*: Per prompt instruction, exact GPS coordinates are not guessed. The website links to verified village/region queries (`Dholi Mangri, Deogarh, Rajsamand`, `Nardas Ka Guda`, and `Binol`) with a clear advisory note for guests to confirm doorstep landmarks with the family hosts.
+*Note on Google Maps Navigation*: Per prompt instruction, exact GPS coordinates are not guessed. The website links to verified village/region queries (`Dholi Mangri, Deogarh, Rajsamand`, `Nardas Ka Gurha`, and `Binol`) with a clear advisory note for guests to confirm doorstep landmarks with the family hosts.

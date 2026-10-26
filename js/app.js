@@ -411,7 +411,7 @@
     if (jmDate) jmDate.textContent = isEn ? jm.dateFormattedEn : jm.dateFormattedHi;
     if (jmDesc) {
       jmDesc.textContent = isEn
-        ? "Hast Melap: 26 Nov, 11:00 AM - 3:00 PM • Barat departs to Nardas Ka Guda"
+        ? "Hast Melap: 26 Nov, 11:00 AM - 3:00 PM • Barat departs to Nardas Ka Gurha"
         : "हस्त मेलाप: 26 नव., दोपहर 11 से 3 बजे • बारात प्रस्थान नरदास का गुड़ा";
     }
 
@@ -912,8 +912,8 @@
       title = "Shubh Vivah: Chi. Jaimin & Sau. Ka. Monika (Malviya Family)";
       // 2026-11-26 07:00 IST to 2026-11-26 16:00 IST -> UTC: 20261126T013000Z / 20261126T103000Z
       dates = "20261126T013000Z/20261126T103000Z";
-      details = "Auspicious wedding of Jaimin & Monika. Barat departs 7:15 AM to Nardas Ka Guda. Hast Melap 11:00 AM to 3:00 PM.";
-      location = "Dholi Mangri, Deogarh / Nardas Ka Guda, Rajasthan";
+      details = "Auspicious wedding of Jaimin & Monika. Barat departs 7:15 AM to Nardas Ka Gurha. Hast Melap 11:00 AM to 3:00 PM.";
+      location = "Dholi Mangri, Deogarh / Nardas Ka Gurha, Rajasthan";
     } else {
       title = "Shubh Vivah: Sau. Ka. Gayatri & Chi. Aditya (Malviya Family)";
       // 2026-11-29 09:00 IST to 2026-11-29 18:00 IST -> UTC: 20261129T033000Z / 20261129T123000Z
@@ -933,8 +933,8 @@
       title = "Shubh Vivah: Jaimin and Monika";
       startDate = "20261126T071500";
       endDate = "20261126T160000";
-      description = "Wedding of Chi. Jaimin & Sau. Ka. Monika. Hast Melap at Nardas Ka Guda. Malviya Family.";
-      location = "Nardas Ka Guda, Rajasthan";
+      description = "Wedding of Chi. Jaimin & Sau. Ka. Monika. Hast Melap at Nardas Ka Gurha. Malviya Family.";
+      location = "Nardas Ka Gurha, Rajasthan";
     } else {
       title = "Shubh Vivah: Gayatri and Aditya";
       startDate = "20261129T090000";

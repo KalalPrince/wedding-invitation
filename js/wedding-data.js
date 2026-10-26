@@ -74,7 +74,7 @@ const WEDDING_DATA = {
         parentsHi: "श्रीमती नर्मदादेवी - श्री देवेन्द्रजी सिद्धावत",
         parentsEn: "Smt. Narmadadevi & Shri Devendraji Siddhawat",
         residenceHi: "नरदास का गुड़ा, राजस्थान",
-        residenceEn: "Nardas Ka Guda, Rajasthan"
+        residenceEn: "Nardas Ka Gurha, Rajasthan"
       },
       ceremonies: [
         {
@@ -99,11 +99,11 @@ const WEDDING_DATA = {
           dateEn: "Thursday, 26 Nov 2026",
           timeHi: "प्रातः 7:15 बजे",
           timeEn: "7:15 AM Morning",
-          venueKey: "nardas-ka-guda",
+          venueKey: "nardas-ka-gurha",
           venueNameHi: "प्रस्थान: धोली मंगरी -> गंतव्य: नरदास का गुड़ा",
-          venueNameEn: "Departure: Dholi Mangri -> Destination: Nardas Ka Guda",
+          venueNameEn: "Departure: Dholi Mangri -> Destination: Nardas Ka Gurha",
           noteHi: "बारात श्रीमान देवेन्द्रजी अशोकजी सिद्धावत नरदास का गुड़ा के यहाँ जाएगी।",
-          noteEn: "The wedding procession will proceed to the residence of Shri Devendraji Ashokji Siddhawat at Nardas Ka Guda."
+          noteEn: "The wedding procession will proceed to the residence of Shri Devendraji Ashokji Siddhawat at Nardas Ka Gurha."
         },
         {
           id: "jm-hast-melap",
@@ -113,9 +113,9 @@ const WEDDING_DATA = {
           dateEn: "Thursday, 26 Nov 2026",
           timeHi: "दोपहर 11:00 से 3:00 बजे तक",
           timeEn: "11:00 AM to 3:00 PM",
-          venueKey: "nardas-ka-guda",
+          venueKey: "nardas-ka-gurha",
           venueNameHi: "श्री देवेन्द्रजी सिद्धावत निवास, नरदास का गुड़ा",
-          venueNameEn: "Shri Devendraji Siddhawat Residence, Nardas Ka Guda",
+          venueNameEn: "Shri Devendraji Siddhawat Residence, Nardas Ka Gurha",
           descHi: "पवित्र अग्नि के समक्ष वर-वधू का हस्त मिलाप एवं सात फेरे।",
           descEn: "Sacred union of hands and circumambulation around the holy fire."
         }
@@ -295,8 +295,8 @@ const WEDDING_DATA = {
       timeHi: "प्रातः 7:15 बजे",
       timeEn: "Morning 7:15 AM",
       descHi: "बारात श्रीमान देवेन्द्रजी अशोकजी सिद्धावत, नरदास का गुड़ा जाएगी।",
-      descEn: "Barat departs from Dholi Mangri to Nardas Ka Guda.",
-      venue: "Dholi Mangri -> Nardas Ka Guda"
+      descEn: "Barat departs from Dholi Mangri to Nardas Ka Gurha.",
+      venue: "Dholi Mangri -> Nardas Ka Gurha"
     },
     {
       id: "shagun-7",
@@ -310,7 +310,7 @@ const WEDDING_DATA = {
       timeEn: "11:00 AM to 3:00 PM",
       descHi: "विवाह संस्कार एवं पाणिग्रहण।",
       descEn: "Sacred wedding rituals and union of hands.",
-      venue: "Nardas Ka Guda"
+      venue: "Nardas Ka Gurha"
     },
     {
       id: "shagun-8",
@@ -501,7 +501,7 @@ const WEDDING_DATA = {
       firms: [
         {
           nameHi: "जीवन युनिवर्सल डेवलपर्स एण्ड एडवाइजरी",
-          nameEn: "Jeevan Universal Developers and Advisory",
+          nameEn: "Jivan Universal Developers and Advisory",
           locationHi: "धोलेरा - अहमदाबाद",
           locationEn: "Dholera - Ahmedabad"
         },
@@ -530,16 +530,16 @@ const WEDDING_DATA = {
       verificationNoteEn: "Location as per Deogarh tehsil, Rajsamand district. Exact GPS pin or landmark can be re-confirmed with family."
     },
     {
-      id: "nardas-ka-guda",
+      id: "nardas-ka-gurha",
       titleHi: "वधू पक्ष निवास (नरदास का गुड़ा) - जैमिन का विवाह",
-      titleEn: "Bride's Residence (Nardas Ka Guda) - Jaimin's Marriage",
+      titleEn: "Bride's Residence (Nardas Ka Gurha) - Jaimin's Marriage",
       descriptionHi: "श्रीमान देवेन्द्रजी अशोकजी सिद्धावत निवास (बारात आगमन एवं हस्त मिलाप)",
       descriptionEn: "Residence of Shri Devendraji Ashokji Siddhawat (Barat arrival and Hast Melap)",
       addressHi: "नरदास का गुड़ा, राजस्थान",
-      addressEn: "Nardas Ka Guda, Rajasthan",
-      mapsQuery: "Nardas+Ka+Guda+Rajasthan",
+      addressEn: "Nardas Ka Gurha, Rajasthan",
+      mapsQuery: "Nardas+Ka+Gurha+Rajasthan",
       verificationNoteHi: "स्थान नरदास का गुड़ा, राजस्थान। बारात प्रस्थान 26-11-2026 प्रातः 7:15 बजे।",
-      verificationNoteEn: "Location Nardas Ka Guda, Rajasthan. Barat departs 26-11-2026 at 7:15 AM."
+      verificationNoteEn: "Location Nardas Ka Gurha, Rajasthan. Barat departs 26-11-2026 at 7:15 AM."
     },
     {
       id: "binol",
