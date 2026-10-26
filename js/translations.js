@@ -12,8 +12,8 @@ const TRANSLATIONS = {
     // Navbar
     familyBrand: "Malviya Family",
     navHome: "Home",
-    navJaimin: "Jaimin's Marriage",
-    navGayatri: "Gayatri's Marriage",
+    navJaimin: "Jaimin & Monika",
+    navGayatri: "Gayatri & Aditya",
     navTimeline: "Ceremonies",
     navFamily: "Family",
     navVenues: "Venues",
@@ -56,7 +56,7 @@ const TRANSLATIONS = {
 
     // Dedicated Wedding View - Jaimin & Monika
     jaiminTitle: "Chi. Jaimin & Sau. Ka. Monika",
-    jaiminSubtitle: "Thursday, 26 November 2026 • Dholi Mangri & Nardas Ka Guda",
+    jaiminSubtitle: "Thursday, 26 November 2026 • Dholi Mangri & Nardas Ka Gurha",
     groomSideHeading: "Groom's Lineage (Malviya Family)",
     brideSideHeading: "Bride's Lineage (Siddhawat Family)",
     grandparentsOfGroom: "Grandson of: Late Smt. Tipuben & Late Shri Kanaji",
@@ -64,7 +64,7 @@ const TRANSLATIONS = {
     residenceGroom: "Resident of: Dholi Mangri (Kalalo ki Aanti), Tehsil Deogarh, Dist. Rajsamand, Rajasthan",
     grandparentsOfBride: "Granddaughter of: Smt. Pawandevi & Shri Ashokji",
     parentsOfBride: "Daughter of: Smt. Narmadadevi & Shri Devendraji Siddhawat",
-    residenceBride: "Resident of: Nardas Ka Guda, Rajasthan",
+    residenceBride: "Resident of: Nardas Ka Gurha, Rajasthan",
 
     // Dedicated Wedding View - Gayatri & Aditya
     gayatriTitle: "Sau. Ka. Gayatri (Shilpa) & Chi. Aditya",
@@ -153,7 +153,7 @@ const TRANSLATIONS = {
     // Footer
     footerFamilyName: "Malviya Family",
     footerAddress: "Kalalo ki Aanti (Dholi Mangri), Tehsil Deogarh, Dist. Rajsamand, Rajasthan",
-    footerPratishthan: "Jeevan Universal Developers and Advisory | S. G. Science Academy",
+    footerPratishthan: "Jivan Universal Developers and Advisory | S. G. Science Academy",
     footerWarmRegards: "With warm respects and heartfelt gratitude for your gracious presence.",
     copyrightNotice: "© 2026 Malviya Family. Digital Kankotri created with love."
   },
