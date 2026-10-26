@@ -1,0 +1,6 @@
+﻿Wedding invitation.pdf
+.env
+.env.*
+!.env.example
+node_modules/
+.vercel/
