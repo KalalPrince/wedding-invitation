@@ -500,10 +500,10 @@
       let tagLabel = isEn ? 'Family Ritual' : 'मांगलिक रस्म';
       if (item.category === 'jaimin') {
         icon = '👑';
-        tagLabel = isEn ? "Brother's Wedding" : "जैमिन विवाह";
+        tagLabel = isEn ? "Jaimin's Marriage" : "जैमिन का विवाह";
       } else if (item.category === 'gayatri') {
         icon = '🪷';
-        tagLabel = isEn ? "Sister's Wedding" : "गायत्री विवाह";
+        tagLabel = isEn ? "Gayatri's Marriage" : "गायत्री का विवाह";
       } else if (item.category === 'memorial') {
         icon = '🙏';
         tagLabel = isEn ? "Ganga Prasadi" : "गंगोज";

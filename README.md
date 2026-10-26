@@ -12,8 +12,8 @@ Built with complete fidelity to the provided `Wedding invitation.pdf` (source of
 - **Rich Color Palette**: Royal Burgundy / Maroon (`#3a0510`, `#520b18`), Antique Gold Foil Gradients (`#dfb76c`, `#d4af37`), Warm Ivory (`#fffefb`), and subtle Sage Green accents.
 - **Custom Indian Wedding Artwork**:
   - Royal Lord Ganesha mandala blessing art (`assets/images/ganesha.jpg`)
-  - Brother's wedding couple artwork: Chi. Jaimin & Sau. Ka. Monika in Rajasthani royal attire (`assets/images/jaimin-monika.jpg`)
-  - Sister's wedding couple artwork: Sau. Ka. Gayatri (Shilpa) & Chi. Aditya performing the sacred Hastmelap under an ornate royal mandap (`assets/images/gayatri-aditya.jpg`)
+  - Jaimin's Marriage couple artwork: Chi. Jaimin & Sau. Ka. Monika in Rajasthani royal attire (`assets/images/jaimin-monika.jpg`)
+  - Gayatri's Marriage couple artwork: Sau. Ka. Gayatri (Shilpa) & Chi. Aditya performing the sacred Hastmelap under an ornate royal mandap (`assets/images/gayatri-aditya.jpg`)
   - Panoramic royal Barat procession illustration with elephants, shehnai musicians, and royal palanquin (`assets/images/barat-banner.jpg`)
   - *No real couple photographs used*, maintaining traditional modesty and cultural reverence.
 - **Royal Opening Envelope & Seal Experience**: An interactive royal envelope with traditional Sanskrit Shloka (*Vakratunda Mahakaya...*) and an animated wax seal with a fragrant rose and marigold petal shower (*Pushpa Varsha*).
@@ -31,16 +31,16 @@ Built with complete fidelity to the provided `Wedding invitation.pdf` (source of
   - Side-by-side illustrated wedding cards for both weddings with **live countdown timers**.
   - Traditional invitation letter & Ram-Ram from elders Bhagwanlalji & Jivanlalji mentioning the sacred *Gangoj* (Ganga Prasadi) on 29-11-2026 and *Pagbandha* on 30-11-2026.
   - Heartfelt *Meethi Manuhaar* verse by the younger generation (Raj, Prince, Sanjana, Gautam, Usha).
-  - Complete 12-event chronological timeline (*Shagun Ke Pal*) with interactive category filters (*All*, *Jaimin's Wedding*, *Gayatri's Wedding*, *Family Rituals*).
+  - Complete 12-event chronological timeline (*Shagun Ke Pal*) with interactive category filters (*All*, *Jaimin's Marriage*, *Gayatri's Marriage*, *Family Rituals*).
   - Complete extended family directory (*Nimantrak*, *Vineet*, *Vishesh Prarthi*, *Darshanabhilashi*, *Jamai Paksh*, *Nanihal Paksh*, and *Pratishthan*).
   - Verified venue cards and guest blessings guestbook.
-- **Brother's Dedicated Invitation (`#jaimin-monika`)**:
+- **Jaimin's Dedicated Invitation (`#jaimin-monika`)**:
   - Couple: **Chi. Jaimin & Sau. Ka. Monika**
   - Date: **Thursday, 26 November 2026**
   - Complete lineage for both Groom and Bride.
   - Dedicated ceremony schedule: Priti Bhoj (25 Nov, 11:15 AM onwards), Barat Departure (26 Nov, 7:15 AM to Nardas Ka Guda), Hast Melap (26 Nov, 11:00 AM to 3:00 PM).
   - Add to Calendar and WhatsApp sharing controls.
-- **Sister's Dedicated Invitation (`#gayatri-aditya`)**:
+- **Gayatri's Dedicated Invitation (`#gayatri-aditya`)**:
   - Couple: **Sau. Ka. Gayatri (Shilpa) & Chi. Aditya**
   - Date: **Sunday, 29 November 2026**
   - Complete lineage for both Bride and Groom.
@@ -153,14 +153,14 @@ Double-click `index.html` to open directly in Google Chrome, Microsoft Edge, Saf
 
 | Information Item | Status | Source / Reference |
 | :--- | :---: | :--- |
-| **Brother's Name & Title** | Verified | Chi. Jaimin Malviya (चि. जैमिन) (Page 1 & 3) |
-| **Brother's Bride** | Verified | Sau. Ka. Monika Siddhawat (सौ.कां. मोनिका) (Page 1 & 3) |
-| **Brother's Wedding Date** | Verified | 26 November 2026, Thursday (26-11-2026, गुरुवार) |
-| **Brother's Ceremonies** | Verified | Priti Bhoj (25th, 11:15 AM), Barat (26th, 7:15 AM), Hast Melap (26th, 11 AM - 3 PM) |
-| **Sister's Name & Title** | Verified | Sau. Ka. Gayatri (Shilpa) (सौ.कां. गायत्री (शिल्पा)) (Page 1 & 3) |
-| **Sister's Groom** | Verified | Chi. Aditya Kaddur (चि. आदित्य) (Page 1 & 3) |
-| **Sister's Wedding Date** | Verified | 29 November 2026, Sunday (29-11-2026, रविवार) |
-| **Sister's Ceremonies** | Verified | Barat Swagat (29th Morning), Panigrahan (29th Auspicious Time), Priti Bhoj (29th, 11:15 AM) |
+| **Jaimin's Name & Title** | Verified | Chi. Jaimin Malviya (चि. जैमिन) (Page 1 & 3) |
+| **Jaimin's Bride** | Verified | Sau. Ka. Monika Siddhawat (सौ.कां. मोनिका) (Page 1 & 3) |
+| **Jaimin's Wedding Date** | Verified | 26 November 2026, Thursday (26-11-2026, गुरुवार) |
+| **Jaimin's Ceremonies** | Verified | Priti Bhoj (25th, 11:15 AM), Barat (26th, 7:15 AM), Hast Melap (26th, 11 AM - 3 PM) |
+| **Gayatri's Name & Title** | Verified | Sau. Ka. Gayatri (Shilpa) (सौ.कां. गायत्री (शिल्पा)) (Page 1 & 3) |
+| **Gayatri's Groom** | Verified | Chi. Aditya Kaddur (चि. आदित्य) (Page 1 & 3) |
+| **Gayatri's Wedding Date** | Verified | 29 November 2026, Sunday (29-11-2026, रविवार) |
+| **Gayatri's Ceremonies** | Verified | Barat Swagat (29th Morning), Panigrahan (29th Auspicious Time), Priti Bhoj (29th, 11:15 AM) |
 | **Ganga Prasadi (Gangoj)** | Verified | 29 November 2026, Sunday (Chhath Margashirsha Krishna Paksh Samvat 2083) |
 | **Pagbandha & Mayra** | Verified | 30 November 2026, Monday (Satam Samvat 2083, 12:05 PM) |
 | **Vinayak Sthapana** | Verified | 20-11-2026, Friday (9:15 AM) (Page 2) |
@@ -169,8 +169,8 @@ Double-click `index.html` to open directly in Google Chrome, Microsoft Edge, Saf
 | **Nimantrak Hosts** | Verified | Bhagwanlalji & Jivanlalji s/o Late Shri Kanaji Kalal (Page 1) |
 | **Host Phone Numbers** | Verified | 9427069679, 8866024167, 9725761069, 9724651567 |
 | **Main Residence** | Verified | Kalalo ki Aanti (Dholi Mangri), Tehsil Deogarh, Dist. Rajsamand, Rajasthan |
-| **Brother's In-law Venue**| Verified | Shri Devendraji Ashokji Siddhawat, Nardas Ka Guda, Rajasthan |
-| **Sister's Groom Venue** | Verified | Shri Rameshchandraji Kaddur, Village Binol, Rajasthan (Ahmedabad) |
+| **Jaimin's In-law Venue**| Verified | Shri Devendraji Ashokji Siddhawat, Nardas Ka Guda, Rajasthan |
+| **Gayatri's Groom Venue** | Verified | Shri Rameshchandraji Kaddur, Village Binol, Rajasthan (Ahmedabad) |
 | **Establishments** | Verified | Jeevan Universal Developers & Advisory (Dholera-Ahmedabad); S. G. Science Academy (Ahmedabad) |
 
 *Note on Google Maps Navigation*: Per prompt instruction, exact GPS coordinates are not guessed. The website links to verified village/region queries (`Dholi Mangri, Deogarh, Rajsamand`, `Nardas Ka Guda`, and `Binol`) with a clear advisory note for guests to confirm doorstep landmarks with the family hosts.

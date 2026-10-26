@@ -722,6 +722,26 @@ button {
   pointer-events: none;
 }
 
+/* Intermediate Desktop Navbar Spacing (e.g. 1024px) */
+@media (min-width: 993px) and (max-width: 1180px) {
+  .nav-menu {
+    gap: 0.45rem;
+  }
+
+  .nav-link {
+    font-size: 0.84rem;
+    padding: 0.38rem 0.45rem;
+  }
+
+  .navbar {
+    gap: 0.5rem;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+  }
+}
+
 /* Mobile Nav Drawer */
 @media (max-width: 992px) {
   .mobile-toggle {
@@ -1123,6 +1143,40 @@ button {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .card-header-bar {
+    padding: 1rem 1rem 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .wedding-badge {
+    font-size: 0.76rem;
+    padding: 0.25rem 0.65rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .card-header-bar {
+    padding: 0.75rem 0.75rem 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .wedding-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.45rem;
+    letter-spacing: 0;
+  }
+
+  .monogram-badge {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.95rem;
+  }
 }
 
 .monogram-badge {

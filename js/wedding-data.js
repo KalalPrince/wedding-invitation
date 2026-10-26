@@ -46,8 +46,8 @@ const WEDDING_DATA = {
       dateFormattedEn: "Thursday, 26 November 2026",
       dayHi: "गुरुवार",
       dayEn: "Thursday",
-      roleHi: "वर पक्ष (भाई का विवाह)",
-      roleEn: "Groom's Side (Brother's Wedding)",
+      roleHi: "वर पक्ष (जैमिन का विवाह)",
+      roleEn: "Groom's Side (Jaimin's Marriage)",
       groom: {
         salutationHi: "चि.",
         salutationEn: "Chi.",
@@ -132,8 +132,8 @@ const WEDDING_DATA = {
       dateFormattedEn: "Sunday, 29 November 2026",
       dayHi: "रविवार",
       dayEn: "Sunday",
-      roleHi: "वधू पक्ष (बहन का विवाह)",
-      roleEn: "Bride's Side (Sister's Wedding)",
+      roleHi: "वधू पक्ष (गायत्री का विवाह)",
+      roleEn: "Bride's Side (Gayatri's Marriage)",
       bride: {
         salutationHi: "सौ.कां.",
         salutationEn: "Sau. Ka.",
@@ -532,7 +532,7 @@ const WEDDING_DATA = {
     {
       id: "nardas-ka-guda",
       titleHi: "वधू पक्ष निवास (नरदास का गुड़ा) - जैमिन का विवाह",
-      titleEn: "Bride's Residence (Nardas Ka Guda) - Jaimin's Wedding",
+      titleEn: "Bride's Residence (Nardas Ka Guda) - Jaimin's Marriage",
       descriptionHi: "श्रीमान देवेन्द्रजी अशोकजी सिद्धावत निवास (बारात आगमन एवं हस्त मिलाप)",
       descriptionEn: "Residence of Shri Devendraji Ashokji Siddhawat (Barat arrival and Hast Melap)",
       addressHi: "नरदास का गुड़ा, राजस्थान",
@@ -544,7 +544,7 @@ const WEDDING_DATA = {
     {
       id: "binol",
       titleHi: "वर पक्ष निवास (गाँव बिनोल) - गायत्री का विवाह",
-      titleEn: "Groom's Origin (Village Binol) - Gayatri's Wedding",
+      titleEn: "Groom's Origin (Village Binol) - Gayatri's Marriage",
       descriptionHi: "श्रीमान रमेशचंद्रजी S/o. स्व. श्री मोहनजी कद्दुर निवास (बारात का आगमन स्थल)",
       descriptionEn: "Residence of Shri Rameshchandraji s/o Late Shri Mohanji Kaddur (Barat departure point to Dholi Mangri)",
       addressHi: "गाँव बिनोल, राजस्थान (अहमदाबाद वाले)",

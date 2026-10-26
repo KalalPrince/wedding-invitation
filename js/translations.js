@@ -12,8 +12,8 @@ const TRANSLATIONS = {
     // Navbar
     familyBrand: "Malviya Family",
     navHome: "Home",
-    navJaimin: "Jaimin & Monika",
-    navGayatri: "Gayatri & Aditya",
+    navJaimin: "Jaimin's Marriage",
+    navGayatri: "Gayatri's Marriage",
     navTimeline: "Ceremonies",
     navFamily: "Family",
     navVenues: "Venues",
@@ -41,8 +41,9 @@ const TRANSLATIONS = {
     scrollHint: "Scroll down to explore celebrations",
 
     // Wedding Cards on Homepage
-    brotherWeddingBadge: "Brother's Wedding (Groom's Side)",
-    sisterWeddingBadge: "Sister's Wedding (Bride's Side)",
+    brotherWeddingBadge: "Jaimin's Marriage (Groom's Side)",
+    sisterWeddingBadge: "Gayatri's Marriage (Bride's Side)",
+    twoWeddingsSubtitle: "Celebrating the divine unions of Jaimin's Marriage & Gayatri's Marriage. Explore the individual invitations and ceremony schedules below.",
     weddingDateLabel: "Wedding Date",
     countdownHeading: "Countdown to Sacred Pheras",
     daysLabel: "Days",
@@ -91,8 +92,8 @@ const TRANSLATIONS = {
     timelineHeading: "Shagun Ke Pal",
     timelineSubheading: "Chronological schedule of auspicious wedding rituals & family gatherings",
     filterAll: "All Rituals",
-    filterJaimin: "Jaimin's Wedding",
-    filterGayatri: "Gayatri's Wedding",
+    filterJaimin: "Jaimin's Marriage",
+    filterGayatri: "Gayatri's Marriage",
     filterJoint: "Family Gatherings",
 
     // Family Letter & Invitation Message
@@ -165,8 +166,8 @@ const TRANSLATIONS = {
     // Navbar
     familyBrand: "मालविया परिवार",
     navHome: "मुख्य पृष्ठ",
-    navJaimin: "जैमिन संग मोनिका",
-    navGayatri: "गायत्री संग आदित्य",
+    navJaimin: "जैमिन का विवाह",
+    navGayatri: "गायत्री का विवाह",
     navTimeline: "शगुन के पल",
     navFamily: "परिवार परिचय",
     navVenues: "शुभ स्थान",
@@ -194,8 +195,9 @@ const TRANSLATIONS = {
     scrollHint: "मांगलिक कार्यक्रम देखने हेतु नीचे स्क्रॉल करें",
 
     // Wedding Cards on Homepage
-    brotherWeddingBadge: "वर पक्ष (भाई का विवाह)",
-    sisterWeddingBadge: "वधू पक्ष (बहन का विवाह)",
+    brotherWeddingBadge: "वर पक्ष (जैमिन का विवाह)",
+    sisterWeddingBadge: "वधू पक्ष (गायत्री का विवाह)",
+    twoWeddingsSubtitle: "जैमिन का विवाह एवं गायत्री का विवाह के पावन परिणयोत्सव हेतु व्यक्तिगत आमंत्रण व कार्यक्रम नीचे देखें।",
     weddingDateLabel: "विवाह दिनांक",
     countdownHeading: "शुभ विवाह में शेष समय",
     daysLabel: "दिन",
