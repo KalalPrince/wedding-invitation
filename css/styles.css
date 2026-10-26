@@ -550,73 +550,118 @@ button {
   line-height: 1;
 }
 
-/* Audio Player Button */
+/* Audio Player Button ("Padharo Mhare Desh") */
 .audio-btn {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
   border-radius: 50%;
   border: 1px solid var(--color-gold-base);
-  background: rgba(82, 11, 24, 0.6);
+  background: rgba(82, 11, 24, 0.7);
   color: var(--color-gold-base);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  cursor: pointer;
   transition: all var(--trans-fast);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .audio-btn:hover {
   border-color: var(--color-gold-light);
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.22);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.5);
+  transform: translateY(-1px);
 }
 
+.audio-btn:focus-visible {
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 2px;
+}
+
+.audio-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.audio-btn .audio-icon-music {
+  font-size: 1.1rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--trans-fast);
+}
+
+.audio-btn:hover .audio-icon-music {
+  transform: scale(1.15);
+}
+
+/* When paused: show 🎵 icon, hide audio waves */
+.audio-btn .audio-waves {
+  display: none;
+}
+
+/* When playing: highlight button, hide 🎵 icon, show bouncing audio equalizer waves */
 .audio-btn.playing {
   background: var(--grad-gold);
-  color: var(--color-burgundy-dark);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+  color: #2b0b10;
+  border-color: var(--color-gold-light);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.65);
 }
 
-/* Sound Waves */
+.audio-btn.playing .audio-icon-music {
+  display: none;
+}
+
+.audio-btn.playing .audio-waves {
+  display: inline-flex;
+}
+
+/* Sound Waves Equalizer */
 .audio-waves {
-  display: flex;
   align-items: flex-end;
-  gap: 2px;
-  height: 14px;
+  justify-content: center;
+  gap: 2.5px;
+  height: 16px;
 }
 
 .wave-bar {
   width: 2.5px;
   background-color: currentColor;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 .wave-bar:nth-child(1) { height: 6px; }
-.wave-bar:nth-child(2) { height: 12px; }
+.wave-bar:nth-child(2) { height: 13px; }
 .wave-bar:nth-child(3) { height: 8px; }
-.wave-bar:nth-child(4) { height: 14px; }
+.wave-bar:nth-child(4) { height: 15px; }
 
 .audio-waves.animate-waves .wave-bar:nth-child(1) {
-  animation: soundWave 0.8s ease infinite 0.1s;
+  animation: soundWave 0.8s ease-in-out infinite 0.1s;
 }
 
 .audio-waves.animate-waves .wave-bar:nth-child(2) {
-  animation: soundWave 0.8s ease infinite 0.3s;
+  animation: soundWave 0.8s ease-in-out infinite 0.3s;
 }
 
 .audio-waves.animate-waves .wave-bar:nth-child(3) {
-  animation: soundWave 0.8s ease infinite 0.2s;
+  animation: soundWave 0.8s ease-in-out infinite 0.2s;
 }
 
 .audio-waves.animate-waves .wave-bar:nth-child(4) {
-  animation: soundWave 0.8s ease infinite 0.4s;
+  animation: soundWave 0.8s ease-in-out infinite 0.4s;
 }
 
 @keyframes soundWave {
   0%, 100% {
-    height: 3px;
+    height: 4px;
   }
   50% {
-    height: 14px;
+    height: 16px;
   }
 }
 
@@ -767,8 +812,14 @@ button {
 
   .audio-btn,
   .mobile-toggle {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+  }
+
+  .audio-btn .audio-icon-music {
+    font-size: 1rem;
   }
 }
 

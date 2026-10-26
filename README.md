@@ -48,11 +48,29 @@ Built with complete fidelity to the provided `Wedding invitation.pdf` (source of
   - Barat arrival note from Village Binol (Shri Rameshchandraji Kaddur).
   - Add to Calendar and WhatsApp sharing controls.
 
-### 4. Background Indian Classical Music
-- Interactive toggle with animated sound wave equalizer in the header.
-- **Zero-dependency Web Audio API synthesizer** playing traditional Indian Raag (Tanpura acoustic drone + Shehnai / Santoor melodic motif) that works 100% offline without external mp3 dependencies.
-- Also supports any standard MP3 audio placed in the HTML audio tag.
-- Strictly adheres to browser standards: **Never forced autoplay**.
+### 4. Authentic Rajasthani Folk Background Music ("Padharo Mhare Desh")
+- **Featured Track**: Traditional Rajasthani folk instrumental rendition of the iconic welcome melody *"Padharo Mhare Desh"* (also celebrated as *Kesariya Balam*), composed in Raga Maand with acoustic Sarangi, Sitar, Bansuri (flute), and Dholak.
+- **Audio File Location**:
+  - `assets/audio/padharo-mhare-desh.mp3` (5.1 MB, 44.1 kHz, 192 kbps stereo, 3m 43s duration)
+  - `public/audio/padharo-mhare-desh.mp3` (duplicate mirror for multi-framework / static host support)
+- **Audio Provenance & Licensing**:
+  - Source: Internet Archive Public Music Library (Identifier: `kesariya-balam-padharo-mahare-des-instrumental`).
+  - License/Usage Permission: Traditional Indian Folk Music Archive (Public Domain / Cultural Heritage Creative Archive, legally permissible for personal, non-commercial cultural celebration and wedding invitation use).
+- **Autoplay & First-Interaction Behaviour**:
+  - Attempts seamless autoplay immediately upon page load.
+  - Gracefully catches browser autoplay policy restrictions (e.g., modern Chrome/Safari/Edge blocks unmuted autoplay until user interaction) without console errors or breaking application execution.
+  - Automatically activates playback upon the visitor's first natural interaction (tapping "Open Sacred Invitation", clicking the animated royal wax seal, or touching anywhere on the page).
+  - Continuously loops the tune while visitors browse the invitation.
+- **Music Controls in Navbar**:
+  - Elegant gold circular control in the top-right navbar displaying a music note (`🎵`) when paused and animated gold soundwave equalizer bars when playing.
+  - Allows visitors to pause and resume music at any time.
+  - Fully accessible with dynamic ARIA labels and tooltip titles in English and Hindi.
+  - Seamlessly integrated into responsive desktop and mobile viewports without disturbing the language switcher or navigation drawer.
+- **Explicit Pause Persistence & View Routing**:
+  - If a visitor explicitly pauses the music, their choice is strictly respected; navigation across views (`#home`, `#jaimin-monika`, `#gayatri-aditya`) or clicking sections will never restart the audio.
+  - Single audio instance maintained across the entire single-page architecture without reloading or stuttering.
+- **Synthesizer Fallback**:
+  - Includes a Web Audio API synthesizer tuned to the authentic Rajasthani Maand folk motif (*Ma Pa Dha Sa' Dha Pa Ma Ga Re Ga Ma Pa...*) as an offline fallback if audio files are blocked.
 
 ### 5. Mobile-First Responsive Design
 - Optimized for mobile guests arriving via WhatsApp links.
@@ -69,22 +87,27 @@ Built with complete fidelity to the provided `Wedding invitation.pdf` (source of
 ```
 Wedding Invitation/
 ├── assets/
+│   ├── audio/
+│   │   └── padharo-mhare-desh.mp3 # Authentic Rajasthani folk instrumental (3m 43s)
 │   ├── images/
-│   │   ├── ganesha.jpg          # Lord Ganesha gold foil mandala artwork
-│   │   ├── jaimin-monika.jpg    # Jaimin & Monika royal couple artwork
-│   │   ├── gayatri-aditya.jpg   # Gayatri & Aditya royal union artwork
-│   │   └── barat-banner.jpg     # Panoramic royal Barat procession artwork
+│   │   ├── ganesha.jpg            # Lord Ganesha gold foil mandala artwork
+│   │   ├── jaimin-monika.jpg      # Jaimin & Monika royal couple artwork
+│   │   ├── gayatri-aditya.jpg     # Gayatri & Aditya royal union artwork
+│   │   └── barat-banner.jpg       # Panoramic royal Barat procession artwork
 │   └── icons/
+├── public/
+│   └── audio/
+│       └── padharo-mhare-desh.mp3 # Mirror audio asset for static web hosts
 ├── css/
-│   └── styles.css               # Premium CSS with tokens, responsive grids, and Devanagari styles
+│   └── styles.css                 # Premium CSS with tokens, responsive grids, and Devanagari styles
 ├── js/
-│   ├── wedding-data.js          # Authoritative structured wedding data & lineage
-│   ├── translations.js          # Symmetric English & Hindi translations
-│   ├── audio.js                 # Indian classical synthesizer & audio manager
-│   └── app.js                   # Application state, view routing, countdowns, sharing & calendar
-├── index.html                   # Semantic HTML5 single-page application
-├── Wedding invitation.pdf       # Authoritative source PDF
-└── README.md                    # Documentation & deployment guide
+│   ├── wedding-data.js            # Authoritative structured wedding data & lineage
+│   ├── translations.js            # Symmetric English & Hindi translations
+│   ├── audio.js                   # Padharo Mhare Desh audio engine & synth fallback
+│   └── app.js                     # Application state, view routing, countdowns, sharing & calendar
+├── index.html                     # Semantic HTML5 single-page application with audio element
+├── Wedding invitation.pdf         # Authoritative source PDF
+└── README.md                      # Documentation & deployment guide
 ```
 
 ---

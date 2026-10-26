@@ -21,10 +21,10 @@ const TRANSLATIONS = {
     toggleLang: "हिन्दी",
 
     // Audio & Extras
-    playMusic: "Play Music",
-    pauseMusic: "Pause Music",
-    musicStatusPlaying: "Traditional Shehnai Playing",
-    musicStatusPaused: "Music Paused",
+    playMusic: "Play Padharo Mhare Desh",
+    pauseMusic: "Pause Padharo Mhare Desh",
+    musicStatusPlaying: "🎵 Playing Rajasthani Folk: Padharo Mhare Desh",
+    musicStatusPaused: "⏸️ Music Paused",
     petalShower: "Shower Flowers",
     shareInvite: "Share Invite",
 
@@ -174,10 +174,10 @@ const TRANSLATIONS = {
     toggleLang: "English",
 
     // Audio & Extras
-    playMusic: "शहनाई बजाएं",
-    pauseMusic: "शहनाई रोकें",
-    musicStatusPlaying: "पारंपरिक शहनाई वादन जारी",
-    musicStatusPaused: "शहनाई रोकी गई",
+    playMusic: "पधारो म्हारे देश बजाएं",
+    pauseMusic: "पधारो म्हारे देश रोकें",
+    musicStatusPlaying: "🎵 राजस्थानी लोक धुन: पधारो म्हारे देश जारी",
+    musicStatusPaused: "⏸️ संगीत रोका गया",
     petalShower: "पुष्प वर्षा",
     shareInvite: "आमंत्रण शेयर करें",
 

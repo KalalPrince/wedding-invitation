@@ -1,46 +1,272 @@
 /**
- * Indian Classical Wedding Music & Synthesizer Engine
- * Provides authentic, soothing Tanpura drone and Shehnai/Santoor melodic notes
- * via Web Audio API, with zero external dependencies and 100% offline reliability.
- * Also supports HTML5 Audio element if an MP3 file is supplied.
+ * Malviya Family Wedding Invitation - Background Music & Audio Engine
+ * Features the authentic Rajasthani folk tune "Padharo Mhare Desh" (Instrumental).
+ *
+ * Implements:
+ * - Robust HTML5 Audio element streaming with seamless looping
+ * - Graceful initial autoplay attempt with Promise rejection handling
+ * - First-user-interaction fallback (starts playback on "Open Invitation", wax seal, or touch/click)
+ * - Explicit user pause tracking (never overrides an explicit pause on navigation or interaction)
+ * - Single audio instance preserved across client-side view routing (Home, Jaimin & Monika, Gayatri & Aditya)
+ * - Offline Web Audio API synthesis fallback tuned to Rajasthani Maand Raga
  */
 
 class WeddingAudioManager {
   constructor() {
+    this.htmlAudio = null;
     this.audioContext = null;
     this.isPlaying = false;
+    this.userExplicitlyPaused = false;
+    this.isAutoplayBlocked = false;
+    this.firstGestureHandled = false;
+    this.onStateChange = null;
+
+    // Web Audio API Synthesizer fallback state
     this.droneGain = null;
     this.melodyGain = null;
     this.melodyInterval = null;
-    this.tempoMs = 600;
+    this.tempoMs = 550;
     this.currentStep = 0;
-    this.htmlAudio = null;
-    this.onStateChange = null;
 
-    // Traditional Indian Raga Yaman / Bilawal frequencies (Sa = C4 ~ 261.63Hz)
-    this.rootFreq = 261.63; // C4 (Sa)
+    // Traditional Rajasthani Maand Raga notes (Sa = 261.63Hz / C4)
     this.ragaNotes = {
       Sa: 261.63,
-      Re: 294.33,
+      Re: 293.66,
       Ga: 329.63,
-      Ma: 369.99, // Tivra Ma
+      Ma: 349.23,
       Pa: 392.00,
       Dha: 440.00,
       Ni: 493.88,
       SaHigh: 523.25,
-      ReHigh: 588.66,
+      ReHigh: 587.33,
       GaHigh: 659.25
     };
 
-    // Auspicious Shehnai / Santoor melodic motif for wedding celebrations
+    // Iconic "Padharo Mhare Desh" Maand folk melodic phrasing for synth fallback
     this.melodyPattern = [
-      "Sa", "Ga", "Pa", "Ma", "Pa", "Ni", "SaHigh", null,
-      "SaHigh", "Ni", "Dha", "Pa", "Ma", "Ga", "Re", "Sa",
-      "Pa", "Dha", "Ni", "SaHigh", "GaHigh", "ReHigh", "SaHigh", null,
-      "Ni", "Dha", "Pa", "Ga", "Ma", "Ga", "Re", "Sa"
+      "Ma", "Pa", "Dha", "SaHigh", "Dha", "Pa", "Ma", "Ga",
+      "Re", "Ga", "Ma", "Pa", "Ma", "Ga", "Re", "Sa",
+      "Sa", "Re", "Ga", "Ma", "Pa", "Dha", "Ni", "SaHigh",
+      "SaHigh", "Dha", "Pa", "Ma", "Ga", "Re", "Sa", null
     ];
+
+    this._boundFirstInteraction = this.handleFirstInteraction.bind(this);
   }
 
+  /**
+   * Initializes audio engine, hooks events, and attempts initial autoplay
+   */
+  init() {
+    this.htmlAudio = document.getElementById("weddingBgAudio");
+
+    if (this.htmlAudio) {
+      this.htmlAudio.loop = true;
+      this.htmlAudio.volume = 0.7; // Comfortable background music volume
+
+      // Guarantee loop if browser audio loop event hiccups
+      this.htmlAudio.addEventListener("ended", () => {
+        if (this.isPlaying && !this.userExplicitlyPaused) {
+          this.htmlAudio.currentTime = 0;
+          const p = this.htmlAudio.play();
+          if (p && typeof p.catch === "function") p.catch(() => {});
+        }
+      });
+
+      // Synchronize internal state with audio element native events
+      this.htmlAudio.addEventListener("play", () => {
+        if (!this.userExplicitlyPaused) {
+          this.isPlaying = true;
+          if (this.onStateChange) this.onStateChange(true);
+        } else {
+          try { this.htmlAudio.pause(); } catch (e) {}
+        }
+      });
+
+      this.htmlAudio.addEventListener("pause", () => {
+        this.isPlaying = false;
+        if (this.onStateChange) this.onStateChange(false);
+      });
+
+      this.htmlAudio.addEventListener("error", (e) => {
+        console.warn("Background audio element error, falling back to Web Audio API synth:", e);
+        if (this.isPlaying && !this.userExplicitlyPaused) {
+          this.startSynth();
+        }
+      });
+    }
+
+    // Set up global first-interaction listeners in case autoplay is blocked
+    this.setupFirstInteractionListeners();
+
+    // Attempt initial autoplay as required
+    this.attemptAutoplay();
+  }
+
+  /**
+   * Attempts automatic playback on initial page load
+   */
+  attemptAutoplay() {
+    if (this.isPlaying || this.userExplicitlyPaused) return;
+
+    if (this.htmlAudio) {
+      const playPromise = this.htmlAudio.play();
+      if (playPromise !== undefined && typeof playPromise.then === "function") {
+        playPromise
+          .then(() => {
+            if (this.userExplicitlyPaused) {
+              try { this.htmlAudio.pause(); } catch (e) {}
+              return;
+            }
+            this.isPlaying = true;
+            this.isAutoplayBlocked = false;
+            this.firstGestureHandled = true;
+            this.removeFirstInteractionListeners();
+            if (this.onStateChange) this.onStateChange(true);
+          })
+          .catch(() => {
+            // Autoplay was blocked by browser policy (NotAllowedError)
+            this.isPlaying = false;
+            this.isAutoplayBlocked = true;
+            if (this.onStateChange) this.onStateChange(false);
+          });
+      }
+    }
+  }
+
+  /**
+   * Adds one-time window listeners for user gesture
+   */
+  setupFirstInteractionListeners() {
+    const events = ["click", "touchstart", "keydown"];
+    events.forEach((ev) => {
+      window.addEventListener(ev, this._boundFirstInteraction, { capture: true, passive: true });
+    });
+  }
+
+  /**
+   * Removes one-time window listeners
+   */
+  removeFirstInteractionListeners() {
+    const events = ["click", "touchstart", "keydown"];
+    events.forEach((ev) => {
+      window.removeEventListener(ev, this._boundFirstInteraction, { capture: true });
+    });
+  }
+
+  /**
+   * Handles first user gesture on the page
+   */
+  handleFirstInteraction(event) {
+    if (this.firstGestureHandled) return;
+
+    // If target was the explicit audio toggle button, let its own handler do the work
+    if (event && event.target && event.target.closest && event.target.closest("#audioToggleBtn")) {
+      this.firstGestureHandled = true;
+      this.removeFirstInteractionListeners();
+      return;
+    }
+
+    this.triggerFirstInteractionPlayback();
+  }
+
+  /**
+   * Starts playback on first interaction (e.g., clicking "Open Invitation", wax seal, or tap)
+   * Respects explicit user pause action.
+   */
+  triggerFirstInteractionPlayback() {
+    this.firstGestureHandled = true;
+    this.removeFirstInteractionListeners();
+
+    // If user explicitly paused previously, DO NOT force playback
+    if (this.userExplicitlyPaused || this.isPlaying) {
+      return;
+    }
+
+    this.play(false);
+  }
+
+  /**
+   * Main play method
+   */
+  play(fromUserGesture = true) {
+    if (fromUserGesture) {
+      this.userExplicitlyPaused = false;
+    }
+
+    if (this.htmlAudio) {
+      this.isPlaying = true;
+      const playPromise = this.htmlAudio.play();
+      if (playPromise !== undefined && typeof playPromise.then === "function") {
+        playPromise
+          .then(() => {
+            if (this.userExplicitlyPaused) {
+              try { this.htmlAudio.pause(); } catch (e) {}
+              this.isPlaying = false;
+              if (this.onStateChange) this.onStateChange(false);
+              return;
+            }
+            this.isPlaying = true;
+            this.stopSynth();
+            if (this.onStateChange) this.onStateChange(true);
+          })
+          .catch((err) => {
+            if (this.userExplicitlyPaused || (err && err.name === 'AbortError')) {
+              this.isPlaying = false;
+              if (this.onStateChange) this.onStateChange(false);
+              return;
+            }
+            console.warn("Audio play() promise rejected, falling back to Web Audio synth:", err);
+            this.startSynth();
+            this.isPlaying = true;
+            if (this.onStateChange) this.onStateChange(true);
+          });
+      } else {
+        this.stopSynth();
+        if (this.onStateChange) this.onStateChange(true);
+      }
+    } else {
+      this.startSynth();
+      this.isPlaying = true;
+      if (this.onStateChange) this.onStateChange(true);
+    }
+  }
+
+  /**
+   * Main pause method - respects user's explicit action
+   */
+  pause(isUserExplicit = true) {
+    if (isUserExplicit) {
+      this.userExplicitlyPaused = true;
+    }
+    this.isPlaying = false;
+
+    if (this.htmlAudio) {
+      try {
+        this.htmlAudio.pause();
+      } catch (e) {}
+    }
+
+    this.stopSynth();
+
+    if (this.onStateChange) {
+      this.onStateChange(false);
+    }
+  }
+
+  /**
+   * Toggles playback state
+   */
+  toggle() {
+    if (this.isPlaying) {
+      this.pause(true);
+      return false;
+    } else {
+      this.play(true);
+      return true;
+    }
+  }
+
+  // --- Web Audio API Synth Fallback (Rajasthani Maand Drone & Folk Motif) ---
   initAudioContext() {
     if (!this.audioContext) {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -48,8 +274,31 @@ class WeddingAudioManager {
         this.audioContext = new AudioCtx();
       }
     }
-    if (this.audioContext && this.audioContext.state === 'suspended') {
+    if (this.audioContext && this.audioContext.state === "suspended") {
       this.audioContext.resume();
+    }
+  }
+
+  startSynth() {
+    try {
+      this.initAudioContext();
+      if (!this.audioContext) return;
+      this.startSynthDrone();
+      this.startMelodyLoop();
+    } catch (e) {
+      console.warn("Web Audio API synth could not start:", e);
+    }
+  }
+
+  stopSynth() {
+    if (this.melodyInterval) {
+      clearInterval(this.melodyInterval);
+      this.melodyInterval = null;
+    }
+    if (this.droneGain && this.audioContext) {
+      try {
+        this.droneGain.gain.exponentialRampToValueAtTime(0.0001, this.audioContext.currentTime + 0.4);
+      } catch (e) {}
     }
   }
 
@@ -58,28 +307,27 @@ class WeddingAudioManager {
 
     this.droneGain = this.audioContext.createGain();
     this.droneGain.gain.setValueAtTime(0.001, this.audioContext.currentTime);
-    this.droneGain.gain.exponentialRampToValueAtTime(0.08, this.audioContext.currentTime + 3);
+    this.droneGain.gain.exponentialRampToValueAtTime(0.07, this.audioContext.currentTime + 2);
     this.droneGain.connect(this.audioContext.destination);
 
-    // Tanpura Drone: Pa (392Hz), Sa (261.63Hz), Lower Sa (130.81Hz)
+    // Traditional Tanpura Drone: Pa (392Hz), Sa (261.63Hz), Lower Sa (130.81Hz)
     const droneFreqs = [130.81, 261.63, 392.00];
-    droneFreqs.forEach(freq => {
+    droneFreqs.forEach((freq) => {
       const osc = this.audioContext.createOscillator();
       const oscGain = this.audioContext.createGain();
-      
+
       osc.type = "sine";
       osc.frequency.setValueAtTime(freq, this.audioContext.currentTime);
 
-      // Add gentle chorus/beating
       const lfo = this.audioContext.createOscillator();
       const lfoGain = this.audioContext.createGain();
-      lfo.frequency.setValueAtTime(0.15, this.audioContext.currentTime);
-      lfoGain.gain.setValueAtTime(0.5, this.audioContext.currentTime);
+      lfo.frequency.setValueAtTime(0.18, this.audioContext.currentTime);
+      lfoGain.gain.setValueAtTime(0.6, this.audioContext.currentTime);
       lfo.connect(lfoGain);
       lfoGain.connect(osc.frequency);
       lfo.start();
 
-      oscGain.gain.setValueAtTime(0.4, this.audioContext.currentTime);
+      oscGain.gain.setValueAtTime(0.35, this.audioContext.currentTime);
       osc.connect(oscGain);
       oscGain.connect(this.droneGain);
       osc.start();
@@ -88,13 +336,10 @@ class WeddingAudioManager {
 
   playMelodyNote(noteName) {
     if (!this.audioContext || !this.isPlaying || !noteName) return;
-
     const freq = this.ragaNotes[noteName];
     if (!freq) return;
 
     const now = this.audioContext.currentTime;
-
-    // Shehnai/Santoor dual-oscillator sound with warm resonant filter
     const osc1 = this.audioContext.createOscillator();
     const osc2 = this.audioContext.createOscillator();
     const noteGain = this.audioContext.createGain();
@@ -103,17 +348,16 @@ class WeddingAudioManager {
     osc1.type = "triangle";
     osc2.type = "sawtooth";
     osc1.frequency.setValueAtTime(freq, now);
-    osc2.frequency.setValueAtTime(freq * 1.002, now); // slight detune for rich resonance
+    osc2.frequency.setValueAtTime(freq * 1.002, now);
 
     filter.type = "lowpass";
     filter.frequency.setValueAtTime(1400, now);
-    filter.Q.setValueAtTime(4, now);
+    filter.Q.setValueAtTime(3.5, now);
 
-    // Pluck / reed envelope
     noteGain.gain.setValueAtTime(0.001, now);
-    noteGain.gain.exponentialRampToValueAtTime(0.09, now + 0.08);
-    noteGain.gain.exponentialRampToValueAtTime(0.03, now + 0.35);
-    noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.85);
+    noteGain.gain.exponentialRampToValueAtTime(0.08, now + 0.07);
+    noteGain.gain.exponentialRampToValueAtTime(0.03, now + 0.32);
+    noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
 
     osc1.connect(filter);
     osc2.connect(filter);
@@ -122,12 +366,13 @@ class WeddingAudioManager {
 
     osc1.start(now);
     osc2.start(now);
-    osc1.stop(now + 0.9);
-    osc2.stop(now + 0.9);
+    osc1.stop(now + 0.85);
+    osc2.stop(now + 0.85);
   }
 
   startMelodyLoop() {
     this.currentStep = 0;
+    if (this.melodyInterval) clearInterval(this.melodyInterval);
     this.melodyInterval = setInterval(() => {
       if (!this.isPlaying) return;
       const note = this.melodyPattern[this.currentStep % this.melodyPattern.length];
@@ -136,51 +381,6 @@ class WeddingAudioManager {
       }
       this.currentStep++;
     }, this.tempoMs);
-  }
-
-  toggle() {
-    if (this.isPlaying) {
-      this.pause();
-    } else {
-      this.play();
-    }
-  }
-
-  play() {
-    this.initAudioContext();
-    this.isPlaying = true;
-
-    // Check if HTML5 audio exists with valid source
-    const htmlPlayer = document.getElementById("weddingBgAudio");
-    if (htmlPlayer && htmlPlayer.src && htmlPlayer.src !== "" && !htmlPlayer.error) {
-      htmlPlayer.play().catch(() => {
-        // Fallback to web audio synth
-        this.startSynthDrone();
-        this.startMelodyLoop();
-      });
-    } else {
-      // Direct Web Audio Synth
-      this.startSynthDrone();
-      this.startMelodyLoop();
-    }
-
-    if (this.onStateChange) this.onStateChange(true);
-  }
-
-  pause() {
-    this.isPlaying = false;
-    if (this.melodyInterval) {
-      clearInterval(this.melodyInterval);
-      this.melodyInterval = null;
-    }
-    if (this.droneGain && this.audioContext) {
-      this.droneGain.gain.exponentialRampToValueAtTime(0.0001, this.audioContext.currentTime + 0.5);
-    }
-    const htmlPlayer = document.getElementById("weddingBgAudio");
-    if (htmlPlayer) {
-      htmlPlayer.pause();
-    }
-    if (this.onStateChange) this.onStateChange(false);
   }
 }
 

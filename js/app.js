@@ -137,6 +137,20 @@
       langBtn.setAttribute('aria-label', `Language switcher: ${currentName} active. Click to switch to ${targetName}.`);
     }
 
+    // Update audio button tooltip / label for active language
+    const audioBtn = document.getElementById('audioToggleBtn');
+    const audioTooltip = document.getElementById('audioTooltip');
+    if (audioBtn) {
+      const isPlaying = window.weddingAudio && window.weddingAudio.isPlaying;
+      const isEn = lang === 'en';
+      const label = isPlaying
+        ? (isEn ? 'Pause Padharo Mhare Desh' : 'पधारो म्हारे देश रोकें')
+        : (isEn ? 'Play Padharo Mhare Desh' : 'पधारो म्हारे देश बजाएं');
+      audioBtn.setAttribute('title', label);
+      audioBtn.setAttribute('aria-label', label);
+      if (audioTooltip) audioTooltip.textContent = label;
+    }
+
     // Re-render language-dependent dynamic sections across entire site
     renderWeddingCards();
     renderTimeline(state.activeTimelineFilter);
@@ -309,6 +323,11 @@
 
     if (triggerPetals) {
       triggerPetalShower(35);
+    }
+
+    // Attempt audio playback on opening envelope (handles browser autoplay blocking fallback)
+    if (window.weddingAudio && typeof window.weddingAudio.triggerFirstInteractionPlayback === 'function') {
+      window.weddingAudio.triggerFirstInteractionPlayback();
     }
   }
 
@@ -650,27 +669,34 @@
 
     if (!audioBtn) return;
 
-    window.weddingAudio.onStateChange = (isPlaying) => {
-      const isEn = state.lang === 'en';
-      audioBtn.classList.toggle('playing', isPlaying);
-      if (audioWaves) audioWaves.classList.toggle('animate-waves', isPlaying);
-      const label = isPlaying
-        ? (isEn ? 'Pause Traditional Shehnai Music' : 'शहनाई संगीत रोकें')
-        : (isEn ? 'Play Traditional Shehnai Music' : 'पारंपरिक शहनाई संगीत बजाएं');
-      audioBtn.setAttribute('title', label);
-      audioBtn.setAttribute('aria-label', label);
-      if (audioTooltip) {
-        audioTooltip.textContent = label;
-      }
-      showToast(isPlaying
-        ? (isEn ? '🎵 Playing Traditional Shehnai Music' : '🎵 मांगलिक शहनाई वादन शुरू')
-        : (isEn ? '⏸️ Music Paused' : '⏸️ शहनाई संगीत रोका गया')
-      );
-    };
+    if (window.weddingAudio) {
+      window.weddingAudio.onStateChange = (isPlaying) => {
+        const isEn = state.lang === 'en';
+        audioBtn.classList.toggle('playing', isPlaying);
+        if (audioWaves) audioWaves.classList.toggle('animate-waves', isPlaying);
+        const label = isPlaying
+          ? (isEn ? 'Pause Padharo Mhare Desh' : 'पधारो म्हारे देश रोकें')
+          : (isEn ? 'Play Padharo Mhare Desh' : 'पधारो म्हारे देश बजाएं');
+        audioBtn.setAttribute('title', label);
+        audioBtn.setAttribute('aria-label', label);
+        if (audioTooltip) {
+          audioTooltip.textContent = label;
+        }
+      };
 
-    audioBtn.addEventListener('click', () => {
-      window.weddingAudio.toggle();
-    });
+      audioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.weddingAudio.toggle();
+        const isEn = state.lang === 'en';
+        showToast(window.weddingAudio.isPlaying
+          ? (isEn ? '🎵 Playing Rajasthani Folk: Padharo Mhare Desh' : '🎵 राजस्थानी लोक धुन: पधारो म्हारे देश जारी')
+          : (isEn ? '⏸️ Music Paused' : '⏸️ संगीत रोका गया')
+        );
+      });
+
+      // Initialize audio engine (hooks events and executes autoplay attempt)
+      window.weddingAudio.init();
+    }
   }
 
   // --- PETAL SHOWER ANIMATION ---
