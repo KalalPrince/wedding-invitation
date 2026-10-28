@@ -45,7 +45,7 @@ Built with complete fidelity to the provided `Wedding invitation.pdf` (source of
   - Date: **Sunday, 29 November 2026**
   - Complete lineage for both Bride and Groom.
   - Dedicated ceremony schedule: Barat Swagat (29 Nov Morning), Panigrahan Sanskar (29 Nov Auspicious Time, Samvat 2083 Chhath Margashirsha Krishna Paksh), Priti Bhoj (29 Nov 11:15 AM onwards), Ganga Mai Kalash & Gangoj.
-  - Barat arrival note from Village Binol (Shri Rameshchandraji Kaddur).
+  - Barat arrival note from Village Binol (Shri Rameshchandraji Kattar).
   - Add to Calendar and WhatsApp sharing controls.
 
 ### 4. Authentic Rajasthani Folk Background Music ("Padharo Mhare Desh")
@@ -158,7 +158,7 @@ Double-click `index.html` to open directly in Google Chrome, Microsoft Edge, Saf
 | **Jaimin's Wedding Date** | Verified | 26 November 2026, Thursday (26-11-2026, गुरुवार) |
 | **Jaimin's Ceremonies** | Verified | Priti Bhoj (25th, 11:15 AM), Barat (26th, 7:15 AM), Hast Melap (26th, 11 AM - 3 PM) |
 | **Gayatri's Name & Title** | Verified | Sau. Ka. Gayatri (Shilpa) (सौ.कां. गायत्री (शिल्पा)) (Page 1 & 3) |
-| **Gayatri's Groom** | Verified | Chi. Aditya Kaddur (चि. आदित्य) (Page 1 & 3) |
+| **Gayatri's Groom** | Verified | Chi. Aditya Kattar (चि. आदित्य) (Page 1 & 3) |
 | **Gayatri's Wedding Date** | Verified | 29 November 2026, Sunday (29-11-2026, रविवार) |
 | **Gayatri's Ceremonies** | Verified | Barat Swagat (29th Morning), Panigrahan (29th Auspicious Time), Priti Bhoj (29th, 11:15 AM) |
 | **Ganga Prasadi (Gangoj)** | Verified | 29 November 2026, Sunday (Chhath Margashirsha Krishna Paksh Samvat 2083) |
@@ -170,7 +170,7 @@ Double-click `index.html` to open directly in Google Chrome, Microsoft Edge, Saf
 | **Host Phone Numbers** | Verified | 9427069679, 8866024167, 9725761069, 9724651567 |
 | **Main Residence** | Verified | Kalalo ki Aanti (Dholi Mangri), Tehsil Deogarh, Dist. Rajsamand, Rajasthan |
 | **Jaimin's In-law Venue**| Verified | Shri Devendraji Ashokji Siddhawat, Nardas Ka Gurha, Rajasthan |
-| **Gayatri's Groom Venue** | Verified | Shri Rameshchandraji Kaddur, Village Binol, Rajasthan (Ahmedabad) |
+| **Gayatri's Groom Venue** | Verified | Shri Rameshchandraji Kattar, Village Binol, Rajasthan (Ahmedabad) |
 | **Establishments** | Verified | Jivan Universal Developers & Advisory (Dholera-Ahmedabad); S. G. Science Academy (Ahmedabad) |
 
 *Note on Google Maps Navigation*: Per prompt instruction, exact GPS coordinates are not guessed. The website links to verified village/region queries (`Dholi Mangri, Deogarh, Rajsamand`, `Nardas Ka Gurha`, and `Binol`) with a clear advisory note for guests to confirm doorstep landmarks with the family hosts.

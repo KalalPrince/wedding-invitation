@@ -153,12 +153,12 @@ const WEDDING_DATA = {
         salutationEn: "Chi.",
         nameHi: "आदित्य",
         nameEn: "Aditya",
-        fullNameHi: "चि. आदित्य कद्दुर",
-        fullNameEn: "Chi. Aditya Kaddur",
+        fullNameHi: "चि. आदित्य कट्टर",
+        fullNameEn: "Chi. Aditya Kattar",
         grandparentsHi: "श्रीमती झमकुबाई - स्व. श्री मोहनलालजी",
         grandparentsEn: "Smt. Jhamkubai & Late Shri Mohanlalji",
-        parentsHi: "श्रीमती मंजुदेवी - श्री रमेशचंद्रजी कद्दुर",
-        parentsEn: "Smt. Manjudevi & Shri Rameshchandraji Kaddur",
+        parentsHi: "श्रीमती मंजुदेवी - श्री रमेशचंद्रजी कट्टर",
+        parentsEn: "Smt. Manjudevi & Shri Rameshchandraji Kattar",
         residenceHi: "बिनोल, राजस्थान",
         residenceEn: "Binol, Rajasthan"
       },
@@ -176,8 +176,8 @@ const WEDDING_DATA = {
           venueKey: "dholi-mangri",
           venueNameHi: "निज निवास, धोली मंगरी (कलालों की आँती)",
           venueNameEn: "Family Residence, Dholi Mangri (Kalalo ki Aanti)",
-          noteHi: "बारात गाँव बिनोल से श्रीमान रमेशचंद्रजी S/o. स्व. श्री मोहनजी कद्दुर (अहमदाबाद वाले) के यहां से आएगी।",
-          noteEn: "The wedding procession will arrive from village Binol from Shri Rameshchandraji s/o Late Shri Mohanji Kaddur (Ahmedabad wale)."
+          noteHi: "बारात गाँव बिनोल से श्रीमान रमेशचंद्रजी S/o. स्व. श्री मोहनजी कट्टर (अहमदाबाद वाले) के यहां से आएगी।",
+          noteEn: "The wedding procession will arrive from village Binol from Shri Rameshchandraji s/o Late Shri Mohanji Kattar (Ahmedabad wale)."
         },
         {
           id: "ga-panigrahan",
@@ -545,8 +545,8 @@ const WEDDING_DATA = {
       id: "binol",
       titleHi: "वर पक्ष निवास (गाँव बिनोल) - गायत्री का विवाह",
       titleEn: "Groom's Origin (Village Binol) - Gayatri's Marriage",
-      descriptionHi: "श्रीमान रमेशचंद्रजी S/o. स्व. श्री मोहनजी कद्दुर निवास (बारात का आगमन स्थल)",
-      descriptionEn: "Residence of Shri Rameshchandraji s/o Late Shri Mohanji Kaddur (Barat departure point to Dholi Mangri)",
+      descriptionHi: "श्रीमान रमेशचंद्रजी S/o. स्व. श्री मोहनजी कट्टर निवास (बारात का आगमन स्थल)",
+      descriptionEn: "Residence of Shri Rameshchandraji s/o Late Shri Mohanji Kattar (Barat departure point to Dholi Mangri)",
       addressHi: "गाँव बिनोल, राजस्थान (अहमदाबाद वाले)",
       addressEn: "Village Binol, Rajasthan (Ahmedabad)",
       mapsQuery: "Binol+Rajasthan",
