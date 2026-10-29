@@ -28,6 +28,20 @@ const TRANSLATIONS = {
     petalShower: "Shower Flowers",
     shareInvite: "Share Invite",
 
+    // Instagram Integration
+    navInstagram: "Follow on Instagram",
+    navInstagramTooltip: "Follow us on Instagram (@malviya_weddingdiaries)",
+    instagramTag: "Wedding Diaries",
+    instagramHeading: "Follow Our Wedding Diaries",
+    instagramDesc: "Join us on Instagram as we celebrate the beautiful wedding journeys of Jaimin & Monika and Gayatri & Aditya.",
+    instagramCta: "Follow Us on Instagram",
+    instagramHandle: "@malviya_weddingdiaries",
+    instagramPreviewTitle: "Moments from the Auspicious Celebrations",
+    instagramJaiminTag: "Jaimin & Monika",
+    instagramGayatriTag: "Gayatri & Aditya",
+    instagramBaratTag: "Royal Barat Procession",
+    instagramGaneshaTag: "Shree Ganesha Blessings",
+
     // Envelope / Opening Cover
     invitationCoverBadge: "Auspicious Indian Wedding Invitation",
     openInvitationBtn: "Open Sacred Invitation",
@@ -181,6 +195,20 @@ const TRANSLATIONS = {
     musicStatusPaused: "⏸️ संगीत रोका गया",
     petalShower: "पुष्प वर्षा",
     shareInvite: "आमंत्रण शेयर करें",
+
+    // Instagram Integration
+    navInstagram: "Instagram पर जुड़ें",
+    navInstagramTooltip: "Instagram पर जुड़ें (@malviya_weddingdiaries)",
+    instagramTag: "वेडिंग डायरीज़",
+    instagramHeading: "हमारी शादी की यादों से जुड़ें",
+    instagramDesc: "जैमिन एवं मोनिका और गायत्री एवं आदित्य के विवाह के खूबसूरत पलों और खुशियों से जुड़ने के लिए हमारे Instagram परिवार का हिस्सा बनें।",
+    instagramCta: "Instagram पर जुड़ें",
+    instagramHandle: "@malviya_weddingdiaries",
+    instagramPreviewTitle: "मांगलिक उत्सव के पावन एवं खूबसूरत पल",
+    instagramJaiminTag: "चि. जैमिन संग सौ.कां. मोनिका",
+    instagramGayatriTag: "सौ.कां. गायत्री संग चि. आदित्य",
+    instagramBaratTag: "शाही बारात शोभायात्रा",
+    instagramGaneshaTag: "श्री गणेशाय नमः",
 
     // Envelope / Opening Cover
     invitationCoverBadge: "मांगलिक डिजिटल कंकौत्री",

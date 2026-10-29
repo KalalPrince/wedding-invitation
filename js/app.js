@@ -52,6 +52,8 @@
     'family': { view: 'home', targetId: 'familySection' },
     'venuesSection': { view: 'home', targetId: 'venuesSection' },
     'venues': { view: 'home', targetId: 'venuesSection' },
+    'instagramSection': { view: 'home', targetId: 'instagramSection' },
+    'instagram': { view: 'home', targetId: 'instagramSection' },
     'blessingsSection': { view: 'home', targetId: 'blessingsSection' },
     'blessings': { view: 'home', targetId: 'blessingsSection' },
     'weddingCardsSection': { view: 'home', targetId: 'weddingCardsSection' },
@@ -149,6 +151,18 @@
       audioBtn.setAttribute('title', label);
       audioBtn.setAttribute('aria-label', label);
       if (audioTooltip) audioTooltip.textContent = label;
+    }
+
+    // Update Instagram button tooltip / title for active language
+    const navInstaBtn = document.getElementById('navInstagramBtn');
+    const drawerInstaLink = document.getElementById('mobileDrawerInstagramLink');
+    if (navInstaBtn && t.navInstagramTooltip) {
+      navInstaBtn.setAttribute('title', t.navInstagramTooltip);
+      navInstaBtn.setAttribute('aria-label', t.navInstagramTooltip);
+    }
+    if (drawerInstaLink && t.navInstagramTooltip) {
+      drawerInstaLink.setAttribute('title', t.navInstagramTooltip);
+      drawerInstaLink.setAttribute('aria-label', t.navInstagramTooltip);
     }
 
     // Re-render language-dependent dynamic sections across entire site
@@ -290,6 +304,7 @@
 
         const sections = [
           { id: 'blessingsSection', nav: 'blessingsSection' },
+          { id: 'instagramSection', nav: 'instagramSection' },
           { id: 'venuesSection', nav: 'venuesSection' },
           { id: 'familySection', nav: 'familySection' },
           { id: 'shagunTimelineSection', nav: 'shagunTimelineSection' }
@@ -1024,6 +1039,12 @@
     const langBtn = document.getElementById('langToggleBtn');
     if (langBtn) {
       langBtn.addEventListener('click', toggleLanguage);
+    }
+
+    // Close mobile drawer when clicking the Instagram link
+    const drawerInsta = document.getElementById('mobileDrawerInstagramLink');
+    if (drawerInsta) {
+      drawerInsta.addEventListener('click', closeMobileMenu);
     }
 
     // Envelope open click & touch handlers for mobile touchscreens
